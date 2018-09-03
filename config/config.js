@@ -1,0 +1,12 @@
+module.exports={
+  db:{
+    host:'localhost',
+    port:'27017',
+    db:'api'
+  },
+  server:{
+    port:9121,
+    serect:'xingxingheile',
+    outTime:'60s'
+  }
+}
