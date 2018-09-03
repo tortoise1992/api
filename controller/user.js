@@ -4,7 +4,11 @@ const User=require('../models/user')
 module.exports={
   login:async (ctx,next)=>{
     const param=ctx.request.body
-    User.findByName(param.name)
+    // User.findByName(param.name)
+    User.insert({
+      username:'admin',
+      password:'test'
+    })
     if(param.name == 'ahui' && param.password == '123456'){
 
       const token = jwt.sign({

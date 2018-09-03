@@ -16,8 +16,11 @@ try{
 }
 app.use(koaBodyparser())
 app.use(auth)
+router.get('/',async ctx=>{
+  ctx.body='hello world'
+})
+router.use('/user',userRouter.routes(),userRouter.allowedMethods())
 
-router.use('/',userRouter.routes(),userRouter.allowedMethods())
 app.use(router.routes()).use(router.allowedMethods())
 
 app.listen(config.server.port)

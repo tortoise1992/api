@@ -8,13 +8,18 @@ const userSchema=new Schema({
   password:{
     type:String
   }
-})
+},{collection:'user'})
 
 const userModel=mongoose.model('user',userSchema)
 
 module.exports={
-  findByName:async name=>{
-    const record=await userModel.find({username:name});
-    console.log(record)
+  findByName:name=>{
+    userModel.find((err,record)=>{
+      if(err) console.log(err)
+      console.log(record)
+    })
+  },
+  insert:obj=>{
+    userModel.create(obj);
   }
 }
