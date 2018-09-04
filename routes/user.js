@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
+var userController=require('../controllers/user')
 /* GET users listing. */
-router.post('/login', function(req, res, next) {
-  res.send('这是登录接口');
-});
+router.post('/login', userController.login);
 
 module.exports = router;

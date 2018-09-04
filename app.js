@@ -10,8 +10,11 @@ var app = express();
 
 // 链接数据库
 mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.db}`,{ useNewUrlParser: true },function(err){
-  if(err) throw err
-  console.log('数据库连接成功...')
+  if(err) {
+    console.log('请先开启数据库！！！')
+  }else{
+    console.log('数据库连接成功...')
+  }
 })
 
 // view engine setup
