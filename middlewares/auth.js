@@ -6,11 +6,10 @@ module.exports=function(req,res,next){
   jwt.verify(token,config.server.serect,function(err,item){
     if(err){
       res.json({
-        ret:0,
+        ret:401,
         msg:err['message']
       })
     }else{
-      console.log(item)
       req.query.username=item.username
       next()
     }
