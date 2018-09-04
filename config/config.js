@@ -7,6 +7,6 @@ module.exports={
   server:{
     port:9121,
     serect:'xingxingheile',
-    outTime:'60s'
+    outTime:'3600s'
   }
 }
