@@ -50,6 +50,29 @@ module.exports={
     })
   },
   add:function(req,res,next){
-    var {username}=req.body
+    var user=req.body
+    //先查询是否重名
+    User.find({username:user.username},function(err,doc){
+      if(!err && doc.length == 0){
+        User.create(user,function(err,doc){
+          if(!err){
+            res.json({
+              ret:200,
+              msg:'操作成功'
+            })
+          }else{
+            res.json({
+              ret:0,
+              msg:'操作失败'
+            })
+          }
+        })
+      }else{
+        res.json({
+          ret:0,
+          msg:'操作失败'
+        })
+      }
+    })
   }
 }
