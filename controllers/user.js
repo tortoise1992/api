@@ -9,7 +9,7 @@ module.exports={
         if(doc.length>0){
           if(doc[0].password == password){
             var token=jwt.sign({
-              userid:doc['_id'],
+              userid:doc[0]['_id'],
               username,
               password,
             },config.server.serect,{

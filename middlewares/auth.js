@@ -10,7 +10,7 @@ module.exports=function(req,res,next){
         msg:err['message']
       })
     }else{
-      req.query.username=item.username
+      req.query.userid=item.userid
       next()
     }
   })
