@@ -48,5 +48,8 @@ module.exports={
         {msg:'test'}
       ]
     })
+  },
+  add:function(req,res,next){
+    var {username}=req.body
   }
 }
