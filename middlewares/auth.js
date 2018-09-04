@@ -1,3 +1,19 @@
+var jwt=require('jsonwebtoken')
+var config=require('../config/config')
+var whiteList=require('../config/whiteList')
 module.exports=function(req,res,next){
+  var token=req.headers['token']
+  jwt.verify(token,config.server.serect,function(err,item){
+    if(err){
+      res.json({
+        ret:0,
+        msg:err['message']
+      })
+    }else{
+      console.log(item)
+      req.query.username=item.username
+      next()
+    }
+  })
 
 }

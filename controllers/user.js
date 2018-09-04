@@ -8,19 +8,31 @@ module.exports={
       if(!err){
         if(doc.length>0){
           if(doc[0].password == password){
+            var token=jwt.sign({
+              userid:doc['_id'],
+              username,
+              password,
+            },config.server.serect,{
+              expiresIn:config.server.outTime
+            })
+
             res.json({
-              code:200,
-              msg:'恭喜你，登录成功'
+              ret:200,
+              data:{
+                list:doc
+              },
+              msg:'登录成功',
+              token:token,
             })
           }else{
             res.json({
-              code:200,
+              ret:0,
               msg:'密码错误'
             })
           }
         }else{
           res.json({
-            code:200,
+            ret:0,
             msg:'用户名不存在'
           })
         }
@@ -29,9 +41,12 @@ module.exports={
       }
     })
   },
-  userInfo:function(name){
-    return function(req,res,next){
-
-    }
+  userInfo:function(req,res,next){
+    var username=req.query.username
+    res.json({
+      data:[
+        {msg:'test'}
+      ]
+    })
   }
 }
