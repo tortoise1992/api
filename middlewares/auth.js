@@ -5,6 +5,7 @@ module.exports=function(req,res,next){
   var token=req.headers['token']
   jwt.verify(token,config.server.serect,function(err,item){
     if(err){
+      res.status(401)
       res.json({
         ret:401,
         msg:err['message']
